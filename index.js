@@ -22,6 +22,8 @@ app.use(cookieParser());
 
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
+app.use('/', routes);
+
 app.use(function(req, res) {
   console.log("app.use");
   res.sendStatus(404);
