@@ -1,3 +1,33 @@
 .content {
   margin-top: 60px;
 }
+
+.hover-hand:hover {
+  cursor: pointer; 
+  cursor: hand;
+}
+
+.hidden {
+  display: none;
+}
+
+.as-link {
+  text-decoration: underline;
+}
+
+.as-link:hover {
+  cursor: pointer; 
+  cursor: hand;
+}
+
+.as-inline {
+  display:inline;
+}
+
+.left-pad {
+  padding-left: 20px;
+}
+
+.sm-text {
+  font-size: .5em;
+}

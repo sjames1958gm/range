@@ -1,5 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .row
+    .col-md-6.col-md-offset-3.col-sm-12
+      h1(style="text-align:center") Interactive Shooting Range
+
+block js
+  script(src="/static/javascripts/home.js")
