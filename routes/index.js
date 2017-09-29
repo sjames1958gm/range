@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const { getPersons, addPerson } = require('../db/db_sql');
+const { getPersons, addPerson } = require('../db/db_person');
+const { getAgencies, addAgency } = require('../db/db_agency');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log("route");
@@ -15,7 +17,22 @@ router.get('/events', function(req, res, next) {
 
 router.get('/agencies', function(req, res, next) {
   console.log('agencies');
-  res.render('pages/agencies', {});
+  getAgencies((err, agencies) => {
+    if (err) {
+      console.log(err);
+      agencies = [];
+    }
+    res.render('pages/agencies', { agencies });
+  });
+});
+
+router.post('/addagency', function(req, res, next) {
+  console.log('addagency');
+  let {name, addr, admin, code} = req.body;
+  addAgency(name, addr, admin, code, (err) => {
+    if (err) console.log(err);
+    res.redirect('./agencies');
+  });
 });
 
 router.get('/personnel', function(req, res, next) {

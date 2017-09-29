@@ -2,8 +2,64 @@ extends ../layout
 
 block content
   .row
-    .col-md-6.col-md-offset-3
-      h1(style="text-align:center") Agencies
+    .col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1
+      div
+        h1(style="text-align:center") Agencies
+          span.left-pad.sm-text.as-link.add-new Add New
 
+  .row.hidden.add-form
+    .col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1
+      h2 Add New
+      form(method='POST' action='/range/addagency')
+        div.form-group
+          label.sr-only(for='name') Name:
+          input#name.form-control(type=text, placeholder='name' required name='name')
+        div.form-group
+          label.sr-only(for='addr') Address:
+          input#serno.form-control(type=text, placeholder='address' name='addr')
+        div.form-group
+          label.sr-only(for='admin') Admin:
+          input#name.form-control(type=text, placeholder='admin' name='admin')
+        div.form-group
+          label.sr-only(for='code') Code:
+          input#rank.form-control(type=text, placeholder='code' name='code')
+        button.btn.btn-primary(type='submit') Add
+    
+  .row.hidden.edit
+    .col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1
+      h2 Add New
+      form(method='POST' action='/range/editagency')
+        div.form-group
+          label.sr-only(for='name') Name:
+          input#name.form-control(type=text, placeholder='name' required name='name')
+        div.form-group
+          label.sr-only(for='addr') Address:
+          input#serno.form-control(type=text, placeholder='address' name='addr')
+        div.form-group
+          label.sr-only(for='admin') Admin:
+          input#name.form-control(type=text, placeholder='admin' name='admin')
+        div.form-group
+          label.sr-only(for='code') Code:
+          input#rank.form-control(type=text, placeholder='code' name='code')
+        button.btn.btn-primary(type='submit') Update
+    
+  hr(style="background:#F87431; border:0; height:7px")
+  .row
+    .col-md-8.col-md-offset-2.col-sm-12
+      table.table.table-striped(style="width=100%")
+        tr
+          th Name
+          th Address
+          th Admin
+          th Code
+          th Edit
+        each person, ndx in persons
+          tr
+            td: a.hover-hand(class='person-' + ndx)=agency.name
+            td= agency.address
+            td= agency.admin
+            td= agency.code
+            td
+              button.btn.btn-sm.btn-warning.editbtn Edit
 block js
   script(src="/static/javascripts/agencies.js")
