@@ -4,6 +4,54 @@ block content
   .row
     .col-md-6.col-md-offset-3
       h1(style="text-align:center") Events
+          span.left-pad.sm-text.as-link.add-new Add New
+
+  .row.hidden.add-form
+    .col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1
+      h2 Add New
+      form(method='POST' action='/range/addevent')
+        div.form-group
+          label.sr-only(for='description') Description:
+          input#description.form-control(type='text' placeholder='description' required name='description')
+        div.form-group
+          label.sr-only(for='location') Location:
+          input#location.form-control(type='text' placeholder='location' required name='location')
+        div.form-group
+          label.sr-only(for='date') Date:
+          input#date.form-control(type='date' placeholder='date' required name='date')
+        button.btn.btn-primary(type='submit') Add
+    
+  .row.hidden.edit
+    .col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1
+      h2 Add New
+      form(method='POST' action='/range/editevent')
+        div.form-group
+          label.sr-only(for='description') Description:
+          input#description.form-control(type='text' placeholder='description' required name='description')
+        div.form-group
+          label.sr-only(for='location') Location:
+          input#location.form-control(type='text' placeholder='location' required name='location')
+        div.form-group
+          label.sr-only(for='date') Date:
+          input#date.form-control(type='date' placeholder='date' name='date')
+        button.btn.btn-primary(type='submit') Update
+    
+  hr(style="background:#F87431; border:0; height:7px")
+  .row
+    .col-md-8.col-md-offset-2.col-sm-12
+      table.table.table-striped(style="width=100%")
+        tr
+          th description
+          th location
+          th date
+          th 
+        each event, ndx in events
+          tr
+            td: a.hover-hand(class='event-' + ndx href='/range/event/' + event.id)=event.description
+            td= event.location
+            td= event.date
+            td
+              button.btn.btn-sm.btn-warning.editbtn edit
 
 block js
   script(src="/static/javascripts/events.js")
