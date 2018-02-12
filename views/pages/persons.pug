@@ -12,19 +12,19 @@ block content
       form(method='POST' action='/range/addperson')
         div.form-group
           label.sr-only(for='name') Name:
-          input#name.form-control(type=text, placeholder='name' required name='name')
+          input#name.form-control(type='text' placeholder='name' required name='name')
         div.form-group
           label.sr-only(for='serno') Serial Number:
-          input#serno.form-control(type=text, placeholder='serial number' required name='serno')
+          input#serno.form-control(type='text' placeholder='serial number' required name='serno')
         div.form-group
           label.sr-only(for='email') Email:
-          input#name.form-control(type=email, placeholder='email address' required name='email')
+          input#email.form-control(type='email' placeholder='email address' required name='email')
         div.form-group
           label.sr-only(for='rank') Rank:
-          input#rank.form-control(type=text, placeholder='rank' name='rank')
+          input#rank.form-control(type='text' placeholder='rank' name='rank')
         div.form-group
-          label.sr-only(for='addr') Name:
-          input#addr.form-control(type=text, placeholder='address' name='addr')
+          label.sr-only(for='addr') Address:
+          input#addr.form-control(type='text' placeholder='address' name='addr')
         button.btn.btn-primary(type='submit') Add
     
   .row.hidden.edit
@@ -33,19 +33,19 @@ block content
       form(method='POST' action='/range/editperson')
         div.form-group
           label.sr-only(for='name') Name:
-          input#name.form-control(type=text, placeholder='name' required name='name')
+          input#name.form-control(type='text' placeholder='name' required name='name')
         div.form-group
           label.sr-only(for='serno') Serial Number:
-          input#serno.form-control(type=text, placeholder='serial number' required name='serno')
+          input#serno.form-control(type='text' placeholder='serial number' required name='serno')
         div.form-group
           label.sr-only(for='email') Email:
-          input#name.form-control(type=email, placeholder='email address' required name='email')
+          input#email.form-control(type='email' placeholder='email address' required name='email')
         div.form-group
           label.sr-only(for='rank') Rank:
-          input#rank.form-control(type=text, placeholder='rank' name='rank')
+          input#rank.form-control(type='text' placeholder='rank' name='rank')
         div.form-group
-          label.sr-only(for='addr') Name:
-          input#addr.form-control(type=text, placeholder='address' name='addr')
+          label.sr-only(for='addr') Address:
+          input#addr.form-control(type='text' placeholder='address' name='addr')
         button.btn.btn-primary(type='submit') Update
     
   hr(style="background:#F87431; border:0; height:7px")
@@ -58,7 +58,8 @@ block content
           th Rank
           th Email
           th Address
-          th Edit
+          th Agency
+          th 
         each person, ndx in persons
           tr
             td: a.hover-hand(class='person-' + ndx)=person.name
@@ -66,9 +67,10 @@ block content
             td= person.rank
             td= person.email
             td= person.address
+            td= person.agency_name
             td
               button.btn.btn-sm.btn-warning.editbtn Edit
 
 block js
-  script(src="/static/javascripts/personnel.js")
+  script(src="/static/javascripts/persons.js")
 

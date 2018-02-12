@@ -1,0 +1,65 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-6.col-md-offset-3
+      h1(style="text-align:center")= event.description
+        span.left-pad.sm-text.as-link.add-new Add New Exercise
+
+  .row.hidden.add-form
+    .col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1
+      h2 Add New Exercise
+      form(method='POST' action='/range/addexercise/' + event.id)
+        div.form-group
+          label.sr-only(for='description') Description:
+          input#description.form-control(type='text' placeholder='description' required name='description')
+        div.form-group
+          label.sr-only(for='shooter') Shooter:
+          select#shooter.form-control.addshooterselect(name='shooter')
+        div.form-group
+          label.sr-only(for='rounds') Rounds:
+          input#rounds.form-control(type='text' placeholder='number of rounds' required name='rounds')
+        div.form-group
+          label.sr-only(for='weapon') Weapon:
+          input#weapon.form-control(type='text' placeholder='weapon' required name='weapon')
+        button.btn.btn-primary(type='submit') Add
+    
+  .row.hidden.edit
+    .col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1
+      h2 Add New
+      form(method='POST' action='/range/editexercise/' + event.id)
+        div.form-group
+          label.sr-only(for='description') Description:
+          input#description.form-control(type='text' placeholder='description' required name='description')
+        div.form-group
+          label.sr-only(for='rounds') Rounds:
+          input#rounds.form-control(type='text' placeholder='number of rounds' required name='rounds')
+        div.form-group
+          label.sr-only(for='weapon') Weapon:
+          input#weapon.form-control(type='text' placeholder='weapon' required name='weapon')
+        button.btn.btn-primary(type='submit') Update
+    
+ 
+  hr(style="background:#F87431; border:0; height:7px")
+  .row
+    .col-md-8.col-md-offset-2.col-sm-12
+      table.table.table-striped(style="width=100%")
+        tr
+          th Description
+          th Shooter
+          th Rounds
+          th Weapon
+          th 
+        each exercise in exercises
+          tr
+            td: a.hover-hand(class='exercise-' + exercise.id href='/range/exercise/' + exercise.id)=exercise.description
+            td= exercise.name
+            td= exercise.rounds
+            td= exercise.weapon
+            td
+              button.btn.btn-sm.btn-warning.editbtn(id="edit-"+exercise.id) edit
+              button.btn.btn-sm.btn-danger.left-margin.deltebtn(id='del-'+exercise.id) delete
+
+
+block js
+  script(src="/static/javascripts/event.js")

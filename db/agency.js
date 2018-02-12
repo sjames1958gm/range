@@ -7,15 +7,15 @@ let config = {
   debug: false
 };
 
-module.exports.getPersons = function(cb) {
-  console.log('getPersons');
+module.exports.getAgencies = function(cb) {
+  console.log('getAgencies');
   let connection;
 
   mysql.createConnection(config)
   .then((conn) => {
     console.log("connected");
     connection = conn;
-    return connection.query('select id,email,serno,name,rank,address from person');
+    return connection.query('select id,name,address,admin,code from agency');
   })
   .then(([rows, field]) => {
     console.log(`query: ${JSON.stringify(rows)}`);
@@ -28,14 +28,14 @@ module.exports.getPersons = function(cb) {
   });
 };
 
-module.exports.addPerson = function(name, serno, email, rank, address, cb) {
-  console.log(`addPerson(${name}, ${serno}, ${email}, ${rank}, ${address}`);
+module.exports.addAgency = function(name, address, admin, code, cb) {
+  console.log(`addAgency(${name}, ${address}, ${admin}, ${code}, ${address}`);
   let connection;
   mysql.createConnection(config)
   .then((conn) => {
     console.log("connected");
     connection = conn;
-    return connection.query("insert into person (email, serno, name, rank, address) values (?,?,?,?,?)", [email, serno, name, rank, address])
+    return connection.query("insert into agency (name, address, admin, code) values (?,?,?,?)", [name, address, admin, code])
   })
   .then(() => {
     cb(null);

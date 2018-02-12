@@ -1,9 +1,9 @@
 $(function() {
 
   $(".navli").removeClass("active");
-  $(".nav-personnel").addClass("active");
+  $(".nav-persons").addClass("active");
 
-  console.log("personnel");
+  console.log("persons");
   $(".editbtn").click(function(e) {
     console.log("click");
   });
