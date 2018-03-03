@@ -47,7 +47,7 @@ module.exports.addExercise = function(eventid, description, shooter, rounds, wea
   .then((conn) => {
     console.log("connected");
     connection = conn;
-    return connection.query("insert into exercise (eventid, description, shooterid, rounds, weapon) values (?,?,?,?,?,?)", 
+    return connection.query("insert into exercise (eventid, description, shooterid, rounds, weapon) values (?,?,?,?,?)", 
         [eventid, description, shooter, rounds, weapon]);
   })
   .then(() => {

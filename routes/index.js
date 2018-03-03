@@ -6,6 +6,7 @@ require('./agency')(router);
 require('./person')(router);
 require('./event')(router);
 require('./exercise')(router);
+require('./eventlog')(router);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

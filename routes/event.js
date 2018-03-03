@@ -30,7 +30,7 @@ module.exports = function(router) {
   });
   
   router.post('/addevent', function(req, res, next) {
-    console.log(req.body);
+    console.log(req.headers);
     let {description, location, date} = req.body;
     addEvent(description, location, date, (err) => {
       if (err) console.log(err);

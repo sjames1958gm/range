@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-6.col-md-offset-3
+      h1(style="text-align:center") Event Log
+
+  hr(style="background:#F87431; border:0; height:7px")
+  .row
+    .col-md-10.col-md-offset-1.col-sm-12
+      table.table.table-striped(style="width=100%")
+        tr
+          th Event
+          th Start Time
+          th Exercise
+          th Shooter
+          th Round
+          th RecordType
+          th TimeStamp (ms)
+          th 
+        each record in events
+          tr
+            td= record.event
+            td= record.start
+            td= record.exercise
+            td= record.shooter
+            td= record.round
+            td= record.type
+            td= record.timestamp
+
+block js
+  script(src="/static/javascripts/results.js")
